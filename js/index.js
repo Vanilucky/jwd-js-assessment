@@ -117,7 +117,7 @@ submitButton.addEventListener('click', calculateScore);
 //}
 
 function startTimer(duration, display) {
-  var timer = duration, minutes, seconds;
+  let timer = duration, minutes, seconds;
   setInterval(function () {
       minutes = parseInt(timer / 60, 10);
       seconds = parseInt(timer % 60, 10);
@@ -134,7 +134,7 @@ function startTimer(duration, display) {
 }
 
 window.onload = function () {
-  var fiveMinutes = 60 * 5,
+  let fiveMinutes = 60 * 5,
       display = document.querySelector('#time');
   startTimer(fiveMinutes, display);
 };
