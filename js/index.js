@@ -44,6 +44,18 @@ window.addEventListener('DOMContentLoaded', () => {
       o: ['Sydney', 'Canberra', 'Melbourne', 'Perth'],
       a: 1,
     },
+
+    {
+      q: 'What does CSS stands for?' ,
+      o: ['Central Style Sheets', 'Cascading Style Sheets', 'Cascading Simple Sheets', 'Cars SUVs Sailboats'],
+      a: 1,
+    },
+    {
+     q: 'Which language runs in a Web Browser?',
+     o: ['C','Java', 'Pythan', 'Javascript'],
+     a: 3,
+    },
+
   ];
 
   // function to Display the quiz questions and answers from the object
@@ -76,15 +88,53 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (quizItem.a == i) {
           //change background color of li element here
+           liElement.style.backgroundColor = 'red';       
         }
 
         if (radioElement.checked) {
           // code for task 1 goes here
+          score++;
         }
       }
+      console.log('score' + score);
     });
   };
 
   // call the displayQuiz function
   displayQuiz();
+  let submitButton = document.getElementById('btnSubmit');
+submitButton.addEventListener('click', calculateScore);
 });
+
+//setInterval(time, 1000);
+
+//function time() {
+  //let d = new Date();
+  //document.getElementById("time").innerHTML=
+  //d.getHours() + ":" +
+  //d.getMinutes() + ":" +
+  //d.getSeconds() + '';
+//}
+
+function startTimer(duration, display) {
+  var timer = duration, minutes, seconds;
+  setInterval(function () {
+      minutes = parseInt(timer / 60, 10);
+      seconds = parseInt(timer % 60, 10);
+
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      display.textContent = minutes + ":" + seconds;
+
+      if (--timer < 0) {
+          timer = duration;
+      }
+  }, 1000);
+}
+
+window.onload = function () {
+  var fiveMinutes = 60 * 5,
+      display = document.querySelector('#time');
+  startTimer(fiveMinutes, display);
+};
